@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <link href="css/bootstrap/bootstrap.min.css" rel="stylesheet">
+  <link href="css/login/style.css" rel="stylesheet">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js"></script>
+  <script src="js/bootstrap/jquery-slim.min.js"></script>
+  <script src="js/bootstrap/bootstrap.min.js"></script>
+  <script src="js/login/script.js"></script>
+  <title>Ripetizioni: Accedi o Iscriviti</title>
+  <link rel="icon" type="image/x-icon" href="/img/logo-round.png">
+</head>
+
+<body>
+<article class="light-container">
+  <div class="form-header" onclick="reload()">
+    <h2 class="title-logo">Re-peta</h2>
+  </div>
+
+  <form id="accesso" action="index.html" onsubmit="return doLogIn(this)">
+    <div class="row justify-content-center">
+      <h2 class="mb-4 text-center">Hai già un account?</h2>
+    </div>
+    <div class="form-group">
+      <label for="username">Username</label>
+      <input class="form-control" type="text" id="username" placeholder="Username" required>
+    </div>
+    <div class="form-group">
+      <label for="password">Password</label>
+      <div class="input-group" id="show_hide_password">
+        <input class="form-control" type="password" id="password" placeholder="Password" required>
+        <span class="input-group-text pwd-eye">
+            <img id="slashed-eye" class="slashed-eye" src="img/eye-slash-fill.svg" alt="eye slashed icon">
+            <img id="unslashed-eye" class="unslashed-eye" src="img/eye-fill.svg" alt="eye unslashed icon">
+          </span>
+      </div>
+    </div>
+    <div class="form-check">
+      <input type="checkbox" class="form-check-input" id="ricorda">
+      <label class="form-check-label" for="ricorda">Ricordami</label>
+    </div>
+    <button type="submit" id="accedi" class="form-control btn btn_def submit px-3">
+      Accedi
+    </button>
+    <div class="form-footer">
+      <p>Hai dimenticato la password? <u>Clicca qui per resettarla!</u></p>
+    </div>
+  </form>
+
+  <form id="guestwhat" action="index.html" onsubmit="return doLogInGuest()">
+    <div class="row justify-content-center">
+      <h2 class="mb-4 text-center">Vuoi eseguire l'accesso come ospite?</h2>
+    </div>
+    <button type="submit" id="accessoGuest" class="form-control btn btn_def submit px-3">
+      Accedi come Ospite
+    </button>
+  </form>
+
+  <form id="registrazione" action="index.html" onsubmit="return doRegister(this)">
+    <div class="row justify-content-center">
+      <h2 class="mb-4 text-center">Non hai un account?</h2>
+    </div>
+    <div class="form-row">
+      <div class="form-group col-md-6">
+        <label for="nome">Nome</label>
+        <input type="text" class="form-control" id="nome" placeholder="Mario" title="Inserire il proprio nome"
+               required>
+        <div class="valid-feedback">Ottimo!</div>
+        <div class="invalid-feedback">Inserire un nome valido.</div>
+      </div>
+      <div class="form-group col-md-6">
+        <label for="cognome">Cognome</label>
+        <input type="text" class="form-control" id="cognome" placeholder="Rossi" title="Inserire il proprio cognome"
+               required>
+        <div class="valid-feedback">Ottimo!</div>
+        <div class="invalid-feedback">Inserire un cognome valido.</div>
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="form-group col-md-6">
+        <label for="username2">Username</label>
+        <input type="text" class="form-control" id="username2" placeholder="Username" required>
+        <div class="valid-feedback">Ottimo!</div>
+        <div class="invalid-feedback">
+          Il nome utente fornito non è disponibile.
+        </div>
+      </div>
+      <div class="form-group col-md-6">
+        <label for="password2">Password</label>
+        <input type="password" class="form-control" id="password2" placeholder="Password"
+               pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" oninput="passwordValidation()" onblur="passwordValidation()"
+               required>
+        <div class="valid-feedback">Ottimo!</div>
+        <div class="invalid-feedback">
+          La password inserita non è valida:
+          <p id="lunghezza" class="valid">
+            Almeno <strong>8 lettere</strong>, di cui
+          </p>
+          <p id="minuscola" class="valid2">
+            almeno <strong>1 lettera minuscola</strong>
+          </p>
+          <p id="maiuscola" class="valid2">
+            almeno <strong>1 lettera maiuscola</strong>
+          </p>
+          <p id="numero" class="valid2">almeno <strong>1 numero</strong></p>
+        </div>
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="form-group col-md-6">
+        <label for="email">email</label>
+        <input type="email" class="form-control" id="email" title="Inserire la propria email" placeholder="latuamail@hotmail.it" required>
+        <div class="valid-feedback">Ottimo!</div>
+        <div class="invalid-feedback">
+          Il formato della mail non è corretto.
+        </div>
+      </div>
+      <div class="form-group col-md-6">
+        <label for="dataNascita">Data di nascita</label>
+        <input type="date" class="form-control" id="dataNascita" title="Inserire la propria data di nascita" required>
+        <div class="valid-feedback">Ottimo!</div>
+        <div class="invalid-feedback">
+          Inserisci una data corretta.
+        </div>
+      </div>
+    </div>
+    <button type="submit" id="registrati" class="form-control btn btn_def submit px-3">
+      Registrati
+    </button>
+  </form>
+</article>
+</body>
+
+</html>
